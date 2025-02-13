@@ -1,0 +1,41 @@
+{
+    "name": "Robot Framework Development",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "d-biehl.robotcode",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "streetsidesoftware.code-spell-checker"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python",
+                "python.linting.enabled": true,
+                "robot.language-server.python": "/usr/local/bin/python",
+                "robot.pythonpath": [
+                    "${workspaceFolder}/tests/resources"
+                ],
+                "files.associations": {
+                    "*.robot": "robotframework"
+                }
+            }
+        }
+    },
+
+    // Configuration simplifiée des volumes
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+
+    // Variables d'environnement
+    "remoteEnv": {
+        "PYTHONPATH": "/workspace/tests/resources:/workspace/tests",
+        "ROBOT_OPTIONS": "--outputdir /workspace/results"
+    },
+
+    // Commande post-création
+    "postCreateCommand": "if [ -f 'requirements.txt' ]; then pip install -r requirements.txt; fi"
+}

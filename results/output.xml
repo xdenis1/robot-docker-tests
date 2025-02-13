@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.9.21 on linux)" generated="20250213 18:27:37.125" rpa="false" schemaversion="4">
+<suite id="s1" name="Environment Check" source="/workspace/tests/environment_check.robot">
+<test id="s1-t1" name="Vérifier l'environnement Python" line="6">
+<kw name="Run" library="OperatingSystem">
+<var>${result}</var>
+<arg>python --version</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<msg timestamp="20250213 18:27:37.251" level="INFO">Running command 'python --version 2&gt;&amp;1'.</msg>
+<msg timestamp="20250213 18:27:37.257" level="INFO">${result} = Python 3.9.21</msg>
+<status status="PASS" starttime="20250213 18:27:37.238" endtime="20250213 18:27:37.257"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${result}</arg>
+<arg>Python 3</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250213 18:27:37.258" endtime="20250213 18:27:37.265"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Version Python trouvée: ${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250213 18:27:37.270" level="INFO">Version Python trouvée: Python 3.9.21</msg>
+<status status="PASS" starttime="20250213 18:27:37.267" endtime="20250213 18:27:37.271"/>
+</kw>
+<kw name="Run" library="OperatingSystem">
+<var>${rf_version}</var>
+<arg>robot --version</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<msg timestamp="20250213 18:27:37.283" level="INFO">Running command 'robot --version 2&gt;&amp;1'.</msg>
+<msg timestamp="20250213 18:27:38.415" level="INFO">${rf_version} = Robot Framework 6.1.1 (Python 3.9.21 on linux)</msg>
+<status status="PASS" starttime="20250213 18:27:37.272" endtime="20250213 18:27:38.416"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${rf_version}</arg>
+<arg>Robot Framework</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250213 18:27:38.424" endtime="20250213 18:27:38.427"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Version Robot Framework trouvée: ${rf_version}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250213 18:27:38.430" level="INFO">Version Robot Framework trouvée: Robot Framework 6.1.1 (Python 3.9.21 on linux)</msg>
+<status status="PASS" starttime="20250213 18:27:38.429" endtime="20250213 18:27:38.431"/>
+</kw>
+<doc>Vérifie que Python et Robot Framework sont correctement installés</doc>
+<status status="PASS" starttime="20250213 18:27:37.236" endtime="20250213 18:27:38.433"/>
+</test>
+<test id="s1-t2" name="Vérifier la structure des dossiers" line="16">
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>/workspace/tests</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20250213 18:27:38.439" level="INFO" html="true">Directory '&lt;a href="file:///workspace/tests"&gt;/workspace/tests&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20250213 18:27:38.438" endtime="20250213 18:27:38.439"/>
+</kw>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>/workspace/tests/resources</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20250213 18:27:38.440" level="INFO" html="true">Directory '&lt;a href="file:///workspace/tests/resources"&gt;/workspace/tests/resources&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20250213 18:27:38.439" endtime="20250213 18:27:38.440"/>
+</kw>
+<kw name="Directory Should Exist" library="OperatingSystem">
+<arg>/workspace/tests/../results</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<msg timestamp="20250213 18:27:38.441" level="INFO" html="true">Directory '&lt;a href="file:///workspace/results"&gt;/workspace/results&lt;/a&gt;' exists.</msg>
+<status status="PASS" starttime="20250213 18:27:38.440" endtime="20250213 18:27:38.441"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Structure des dossiers vérifiée avec succès</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250213 18:27:38.441" level="INFO">Structure des dossiers vérifiée avec succès</msg>
+<status status="PASS" starttime="20250213 18:27:38.441" endtime="20250213 18:27:38.441"/>
+</kw>
+<doc>Vérifie que les dossiers nécessaires existent</doc>
+<status status="PASS" starttime="20250213 18:27:38.436" endtime="20250213 18:27:38.442"/>
+</test>
+<doc>Test de vérification de l'environnement</doc>
+<status status="PASS" starttime="20250213 18:27:37.141" endtime="20250213 18:27:38.454"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Environment Check">Environment Check</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

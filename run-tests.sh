@@ -1,6 +1,5 @@
 #!/bin/bash
-docker build -t robot-tests .devcontainer
-docker run --rm \
-    -v "$(pwd)/tests:/tests" \
-    -v "$(pwd)/tests/results:/tests/results" \
-    robot-tests
+docker run --rm -it \
+    -v "/Users/deniskochlyak/robot-docker-tests/tests:/tests" \
+    -v "/Users/deniskochlyak/robot-docker-tests/tests/results:/tests/results" \
+    robot-tests /bin/bash

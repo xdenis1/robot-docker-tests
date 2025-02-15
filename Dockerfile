@@ -42,4 +42,4 @@ RUN mkdir -p /workspace/tests/resources /workspace/results
 RUN chmod -R 777 /workspace
 
 # Copier les fichiers de test dans l'image Docker
-COPY ../tests /workspace/tests
+COPY tests /workspace/tests

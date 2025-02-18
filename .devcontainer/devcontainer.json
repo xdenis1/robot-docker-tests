@@ -3,7 +3,6 @@
     "build": {
         "dockerfile": "Dockerfile"
     },
-
     "customizations": {
         "vscode": {
             "extensions": [
@@ -25,17 +24,25 @@
             }
         }
     },
-
-    // Configuration simplifiée des volumes
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
     "workspaceFolder": "/workspace",
-
-    // Variables d'environnement
     "remoteEnv": {
         "PYTHONPATH": "/workspace/tests/resources:/workspace/tests",
-        "ROBOT_OPTIONS": "--outputdir /workspace/results"
+        "ROBOT_OPTIONS": "--outputdir /workspace/results",
+        "CHROME_BINARY_LOCATION": "/usr/bin/chromium",
+        "CHROMEDRIVER_PATH": "/usr/bin/chromedriver",
+        "DISPLAY": ":99"
     },
-
-    // Commande post-création
-    "postCreateCommand": "if [ -f 'requirements.txt' ]; then pip install -r requirements.txt; fi"
+    "postCreateCommand": "bash -c 'if [ -f requirements.txt ]; then pip install -r requirements.txt; fi && xvfb-run --server-args=\"-screen 0 1920x1080x24\" chromium --version && xvfb-run --server-args=\"-screen 0 1920x1080x24\" chromedriver --version'",
+    "runArgs": [
+        "--security-opt=seccomp=unconfined",
+        "--cap-add=SYS_ADMIN",
+        "--shm-size=2g"
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "installZsh": true,
+            "configureZshAsDefaultShell": true
+        }
+    }
 }

@@ -1,19 +1,25 @@
-# Core Robot Framework
-robotframework==6.1.1
+# Framework principal et bibliothèques essentielles de test
+robotframework==6.1.1  # Le framework de base
+robotframework-seleniumlibrary==6.1.3  # Pour l'automatisation web
+robotframework-requests==0.9.6  # Pour les tests d'API REST
+robotframework-databaselibrary==1.2.4  # Pour les tests de base de données
+robotframework-faker==1.1.0  # Pour la génération de données de test
+robotframework-jsonlibrary==0.5  # Pour la manipulation JSON
 
-# Test Libraries
-robotframework-seleniumlibrary==6.1.3
-robotframework-requests==0.9.6
-robotframework-databaselibrary==1.2.4
-robotframework-faker==1.1.0
-robotframework-postmancollection==1.0.0
-robotframework-jsonlibrary==0.5
+# Nous retirons robotframework-postmancollection car :
+# 1. Il n'est pas disponible sur PyPI
+# 2. robotframework-requests offre une meilleure approche pour les tests d'API
+# 3. Nous pouvons convertir les collections Postman en tests Robot Framework manuellement
 
-# Code Quality Tools
-pytest==7.4.3
-pylint==3.0.2
-black==23.11.0
+# Outils de qualité de code
+pytest==7.4.3  # Pour les tests unitaires Python
+pylint==3.0.2  # Pour l'analyse statique du code
+black==23.11.0  # Pour le formatage du code
 
-# API Testing Dependencies
-jsonschema==4.19.0
-python-dotenv==1.0.0
+# Dépendances pour les tests d'API
+jsonschema==4.19.0  # Pour la validation des schémas JSON
+python-dotenv==1.0.0  # Pour la gestion des variables d'environnement
+
+# Dépendances additionnelles recommandées
+requests>=2.28.0  # Nécessaire pour robotframework-requests
+PyYAML>=6.0  # Utile pour la configuration et les données de test
